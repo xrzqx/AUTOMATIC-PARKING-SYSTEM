@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+</head>
+<body>
+
+    {% block judul %}{% endblock %}
+    <div class="alert alert-success d-none" role="alert" id="scs">
+        Proses pencocokan telah berhasil..
+    </div>
+    <div class="alert alert-danger d-none" role="alert" id="fail">
+        Wajah anda tidak cocok silahkan coba lagi..
+    </div>
+    <div class="alert alert-warning d-none" role="alert" id="warn">
+        Plat nomor yang anda masukan tidak terdaftar dalam sistem silahkan coba lagi..
+    </div>
+    <div class="alert alert-success d-none" role="alert" id="scs-msk">
+        Anda telah berhasil mendaftar..
+    </div>
+    <div class="alert alert-danger d-none" role="alert" id="fail-msk">
+        Plat nomor yang anda masukan telah terdaftar dalam sistem silahkan coba lagi..
+    </div>
+    <div class="alert alert-warning d-none" role="alert" id="warn-msk">
+        Plat nomor yang terbaca tidak valid silahkan coba lagi..
+    </div>
+    {% block content %}{% endblock %}
+
+    <meta id="my-data" data-status="{{messages}}">
+    <script>
+        var alt = $('#my-data').data();
+        console.log(alt);
+        if(alt.status == "0"){
+            document.getElementById("fail").classList.remove('d-none');
+            alt.status = ''
+        }
+        else if (alt.status == "1"){
+            document.getElementById("scs").classList.remove('d-none');
+            alt.status = ''
+        }
+        else if (alt.status == "2"){
+            document.getElementById("warn").classList.remove('d-none');
+            alt.status = ''
+        }
+        else if (alt.status == "00"){
+            document.getElementById("fail-msk").classList.remove('d-none');
+            alt.status = ''
+        }
+        else if (alt.status == "11"){
+            document.getElementById("scs-msk").classList.remove('d-none');
+            alt.status = ''
+        }
+        else if (alt.status == "22"){
+            document.getElementById("warn-msk").classList.remove('d-none');
+            alt.status = ''
+        }
+        else{
+            document.getElementById("scs").classList.remove('d-none');
+            document.getElementById("fail").classList.remove('d-none');
+            document.getElementById("warn").classList.remove('d-none');
+            document.getElementById("scs-msk").classList.remove('d-none');
+            document.getElementById("fail-msk").classList.remove('d-none');
+            document.getElementById("warn-msk").classList.remove('d-none');
+            document.getElementById("scs").classList.add('d-none');
+            document.getElementById("fail").classList.add('d-none');
+            document.getElementById("warn").classList.add('d-none');
+            document.getElementById("fail-msk").classList.add('d-none');
+            document.getElementById("scs-msk").classList.add('d-none');
+            document.getElementById("warn-msk").classList.add('d-none');
+        }
+        
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

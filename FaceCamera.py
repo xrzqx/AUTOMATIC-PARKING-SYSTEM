@@ -67,7 +67,7 @@ class FaceCamera(object):
             eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_eye.xml')
             eyesleft = eye_cascade.detectMultiScale(gray_merge_left, 1.3, 3)
             eyesright = eye_cascade.detectMultiScale(gray_merge_right, 1.3, 3)
-            print(len(eyesleft), len(eyesright))
+            # print(len(eyesleft), len(eyesright))
 
             if len(eyesright) == 1 and len(eyesleft) == 1:
                 # center of right eye

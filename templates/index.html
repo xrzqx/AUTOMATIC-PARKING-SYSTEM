@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block judul %}
+<h1 class="ml-3">Live Stream</h1>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+
+    <div class="col col-sm-12 ml-3">
+        <img src="{{ url_for('video_face')}} ">
+        <img src="{{ url_for('video_plate')}} ">
+    </div>
+    
+    <div class="col col-sm-12 mt-3 ml-3">
+        <form id="contact-form" action="/" method="post">
+            <input class="btn btn-sm btn-primary pl-3 pr-3" type="submit" value="Masuk">
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}
