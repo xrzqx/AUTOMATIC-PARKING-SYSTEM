@@ -23,14 +23,6 @@ def index():
 def sign_in():
     if request.method == 'POST':
         img_jpg = face_camera.get_img_face_align()
-        while(True):
-            if isinstance(img_jpg,np.ndarray):
-                break
-            img_jpg = face_camera.get_img_face_align()
-
-        cv2.imshow("img",img_jpg)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
         return redirect('/')
 
 @app.route('/video_face')
